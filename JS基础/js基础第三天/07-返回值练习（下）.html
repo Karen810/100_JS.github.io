@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //求阶乘
+    // console.log(getJC(10));
+    // function getJC(num) {
+    //     var sumJC = 1;
+    //     for(var i=1; i<=num; i++){
+    //         sumJC *= i;
+    //     }
+    //     return sumJC;
+    // }
+    //
+    //
+    //
+    // //求阶乘的和
+    // //1!+2!+3!+4!+5!+6!+...+n!(函数嵌套)
+    // console.log(getSumJC(4));
+    //
+    //
+    // function getSumJC(num) {
+    //     var sum = 0;
+    //     for(var i=1; i<=num; i++){
+    //         sum += getJC(i);  //求阶乘
+    //     }
+    //     return sum;
+    // }
+
+    //    console.log(getJC(10));
+    //
+    //    function getJC(num){
+    //        var sumJC = 1;
+    //        for(var i=1;i<=num;i++){
+    //            sumJC *= i;
+    //        }
+    //        return sumJC;
+    //    }
+
+
+
+    //判断一个数是否是素数（质数）：除了自身和1之外，不能被其他数整除。
+
+    // 注意点：
+    // 1、必须用for循环实现
+    // 2、判断是否是质数，所以她的返回值应该是true或者false
+    // 3、如果num%i===0了，那么一定不是质数。只有除了1和自身以外，所有的数都不能整除，那么才能说它是质数。
+    console.log(isPrime(7));
+
+    // 方法1：
+    // function isPrime(num) {
+    //     for(var i=2; i<num; i++){
+    //         if(num%i===0){
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }
+
+    // 拓展方法2:开闭原则(了解)
+    // function isPrime(num){
+    //     var bool = true;
+    //     for(var i=2; i<num; i++){
+    //         if(num%i===0){
+    //             bool = false;
+    //         }
+    //     }
+    //     return bool;
+    // }
+
+    // 拓展方法3
+    // function isPrime(num) {
+    //     for(var i=2; i<=num/2; i++){
+    //         if(num%i===0){
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }
+
+    // 拓展方法3
+    function isPrime(num) {
+    // 判断一个数是不是质数，只需要判断它的平方根，超过平方根再判断，无意义。
+    // 因为一个数是由两个数相乘得到的，一个变大，另外一个必然变小，那么判断这个数的平方根就已经是极限了，不必超过平方根
+        // Math.sqrt(num) 平方根
+        for(var i=2; i<=Math.sqrt(num); i++){
+            if(num%i===0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+
+</script>
+</body>
+</html>

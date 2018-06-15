@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div id="app">
+    <!--vue的ui框架：iview，mintui，elementui-->
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>全选 <input type="checkbox" v-model="checkAll"></th>
+                    <th>商品</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>小计</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(product,index) in products">
+                    <td><input type="checkbox" v-model="product.isSelected"></td>
+                    <td>
+                        <img :src="product.productCover" alt="productCover" :title="product.productName">
+                        {{product.productInfo}}
+                    </td>
+                    <td>{{product.productPrice}}</td>
+                    <!--.number是让输入框的值变成数值型， .lazy当输入框失去焦点时更新数据-->
+                    <td><input type="number" v-model.number.lazy="product.productAmount" min="1"></td>
+                    <td>{{product.productPrice*product.productAmount | toFixed(2)}}</td>
+                    <td><button type="button" class="btn btn-danger" @click="remove(product)">Delete</button></td>
+                </tr>
+                <tr class="text-right">
+                    <!--{{sum()}}数据一变化就会重新调用此函数，算出最新的结果，不会缓存上一次的结果，所以这种当时不太好   computed可以解决这个问题-->
+                    <td colspan="6">总价格: {{sum | toFixed(2)}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+<!--基于promise的，不依赖于vue，react也可以用它-->
+<script type="text/javascript" src="../node_modules/axios/dist/axios.js"></script>
+<script type="text/javascript" src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        //当给全选赋值时，要影响其他人的变化，当页面刷新时，获取全选值，是根据下面的checkbox计算出来的结果给全选赋值
+        computed:{
+            checkAll:{
+                //当product是变化时会重新计算
+                //get 和 set   this指向实例
+                get(){  //默认’全选框‘的v-model会获取checkAll的值，所以会调用get方法
+                    return this.products.every(p => p.isSelected);
+                },
+                set(val){  //给全选的checkbox赋值时，根据这个值实现下面的单选框的全选和反选
+                    this.products.forEach(p => p.isSelected=val);
+                }
+            },
+            // sum:{  //sum的结果会被缓存，如果依赖的数据没有变化就不会重新执行
+            //     //注意：html中调用的写法
+            //     get(){
+            //         return this.products.reduce((prev,next) => {
+            //             console.log(next.isSelected);
+            //             if(!next.isSelected) return prev;
+            //             return prev+next.productPrice*next.productAmount
+            //         }, 0)
+            //     }
+            //
+            // }
+            //如果计算属性写成函数形式，默认调用的是get方法
+            sum(){
+                    return this.products.reduce((prev,next) => {
+                        console.log(next.isSelected);
+                        if(!next.isSelected) return prev;
+                        return prev+next.productPrice*next.productAmount
+                    }, 0)
+                }
+
+        },
+        filters:{
+            toFixed(input,decimal) {
+                return '¥' + input.toFixed(decimal);
+            }
+        },
+        methods:{
+            // sum(){
+            //     return this.products.reduce((prev,next) => {
+            //         console.log(next.isSelected);
+            //         if(!next.isSelected) return prev;
+            //         return prev+next.productPrice*next.productAmount
+            //     }, 0)
+            // },
+            // oneChange(){
+            //     this.checkAll = this.products.every(item => item.isSelected)
+            // },
+            // allChange(){
+            //     this.products.forEach(item => item.isSelected=this.checkAll)
+            // },
+            remove(p){
+                this.products = this.products.filter(item => item!==p)
+            },
+            getData(){
+                axios.get('cart.json').then(res => { //success
+                    this.products = res.data;
+                    // this.oneChange();
+
+                },err => {  //failed
+                    console.log(err);
+                })
+            }
+
+        },
+
+        created(){
+            this.getData();
+
+        },
+        data:{
+            products:[],
+            // checkAll:false,
+        }
+    })
+
+</script>
+</body>
+</html>

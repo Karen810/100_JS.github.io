@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .aaa {
+            color: #ff7631;
+        }
+    </style>
+</head>
+<body>
+<div id="box" style="width: 200px; height: 200px; background: pink;cursor: pointer"></div>
+<script>
+    var div = document.getElementById("box");
+    console.log(div);
+
+    div.onclick = function(){
+        // div.style.width = "500px";
+        // div.style.height = "500px";
+        // div.style.background = "#f00";
+        div.className = 'aaa';
+    }
+
+
+</script>
+</body>
+</html>

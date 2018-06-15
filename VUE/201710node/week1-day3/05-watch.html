@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>watch侦听属性：支持异步</title>
+    <!-- 3-3：10分 -->
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="val">
+        <p>{{errMsg}}</p>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:'#app',
+            // computed:{   //computed默认调用get方法，get必须有return，computed不支持异步
+            //     errMsg(){
+            //         setTimeout(() => {
+            //                 if(this.val.length < 3){
+            //                     return '最少三个字';
+            //                 }
+            //                 if(this.val.length > 6){
+            //                     return '最多六个字';
+            //                 }
+            //                 //如果没有以上这些情况就返回空字符，也即不显示
+            //                 return ''
+            //             }
+            //         ,500)
+            //     }
+            // },
+
+
+
+            //computed不支持异步，所以要用watch,注意：errMsg这是是放在data里的
+            watch:{  //只有值变化的时候才触发，支持异步，其他情况我们更善于使用computed
+                val(newVal,oldVal){  //watch属性名字要和所侦听的对象的名字一样   有两个参数：newVal,oldVal
+
+                    // console.log(newVal,oldVal);
+
+                    this.errMsg = '.......';  //500反应的时间内显示这个，不知道可不可以利用这个loading的小图标
+                    setTimeout(() => {     //测试异步：setTimeout(() => {},500)
+                        if(newVal.length < 3){
+                            return this.errMsg = '最少三个字';
+                        }
+                        if(newVal.length > 6){
+                            return this.errMsg = '最多六个字';
+                        }
+                        return this.errMsg = '';
+                    },1000)   //想要快一点可以把时间改成500（0.5秒）
+                }
+            },
+            data:{
+                val:'',
+                errMsg:''
+            }
+        });
+
+
+        // 命令式的 vm.$watch  3-3：24分54秒
+
+        // 注意：侦听的对象要用引号引起来，是字符串或者fn；this都要改成vm
+        // vm.$watch('val',(newVal,oldVal) => {
+        //     vm.errMsg = '.......';
+        //     setTimeout(() => {
+        //         if(newVal.length < 3){
+        //             return vm.errMsg = '最少三个字';
+        //         }
+        //         if(newVal.length > 6){
+        //             return vm.errMsg = '最多六个字';
+        //         }
+        //         return vm.errMsg = '';
+        //     },1000)
+        // })
+    </script>
+</body>
+</html>

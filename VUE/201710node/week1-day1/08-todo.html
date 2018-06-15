@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todo</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="val" @keyup="add">
+    <ul>
+        <li v-for="(a,index) in arr">{{a}}<button @click="remove(index)">delete</button></li>
+    </ul>
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        methods:{
+            add(e){
+                if(e.keyCode === 13){ //可以写成:@keyup.enter='add'   @keyup.ctrl.enter='add':ctrl+enter键   这叫vue的键盘修饰符
+                    this.arr.unshift(this.val);
+                    this.val = '';
+                }
+            },
+            remove(i){
+                this.arr = this.arr.filter((item,index)=>index!==i)
+                // item指点击的这一条
+                // index指点击的这一条的索引
+                // i指点击的这个delete的索引
+
+                // 如果所点击的delete的索引和某一条目信息的索引一致，说明对上号了，就删除；如果所点击的delete的索引和某一条目信息的索引不一致，说明对不上号，不是要删除的那一项。而filter想要过滤出的是对不上的那些，保留下来，所以用‘！==’
+
+                //filter 返回结果：过滤后的新数组  回调函数的返回结果：如果返回true 表示这一项放到新数组中     （删除）
+                // (item,index)=>index!==i
+                // 相当于:
+                // fn(item,index){
+                //     return index!==i;
+                // }
+            }
+        },
+        data:{
+            arr:[],
+            val:'',
+        }
+    })
+</script>
+</body>
+</html>

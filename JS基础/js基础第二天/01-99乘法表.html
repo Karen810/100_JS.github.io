@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //需求： 利用table标签输入九九乘法表
+    //思路： 以前我们直接输出九九乘法表，现在我们利用tr和td标签输出
+    //步骤：
+    // 1、table标签只需要输出一遍，所以不需要for循环
+    document.write('<table border="1" cellpadding="0" cellspacing="0">');
+    // 2、tr标签需要输出9遍，所以放入for循环
+    for(var i = 1; i <= 9; i++){
+        document.write('<tr>');
+        for(var j = 1; j <= i; j++){
+            document.write('<td>');
+            document.write(i +'*'+ j +'='+ i*j);
+            document.write('</td>');
+        }
+        document.write('</tr>');
+    }
+    ///3、td标签需要45遍，而且还是三角形，所以我们利用双重for循环
+
+    document.write('</table>');
+
+
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

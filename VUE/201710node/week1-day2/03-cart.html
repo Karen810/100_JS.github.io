@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div id="app">
+    <!--vue的ui框架：iview，mintui，elementui-->
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <!--click点击是checkbox的状态还没有改变，所以拿到的总是相反的,change可以保证只当值变化后再触发函数-->
+                    <th>全选 <input type="checkbox" v-model="checkAll" @change="allChange"></th>
+                    <th>商品</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>小计</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(product,index) in products">
+                    <td><input type="checkbox" v-model="product.isSelected" @change="oneChange"></td>
+                    <td>
+                        <img :src="product.productCover" alt="productCover" :title="product.productName">
+                        {{product.productInfo}}
+                    </td>
+                    <td>{{product.productPrice}}</td>
+                    <!--.number是让输入框的值变成数值型， .lazy当输入框失去焦点时更新数据-->
+                    <td><input type="number" v-model.number.lazy="product.productAmount" min="1"></td>
+                    <td>{{product.productPrice*product.productAmount | toFixed(2)}}</td>
+                    <td><button type="button" class="btn btn-danger" @click="remove(product)">Delete</button></td>
+                </tr>
+                <tr class="text-right">
+                    <!--{{sum()}}数据一变化就会重新调用此函数，算出最新的结果，不会缓存上一次的结果，所以这种当时不太好   computed可以解决这个问题-->
+                    <td colspan="6">总价格: {{sum() | toFixed(2)}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+<!--基于promise的，不依赖于vue，react也可以用它-->
+<script type="text/javascript" src="../node_modules/axios/dist/axios.js"></script>
+<script type="text/javascript" src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        filters:{  //可以自定义好多的自定义过滤器
+            toFixed(input,decimal) {  //input代表的是管道符前面的内容，decimal代表的是toFixed中传递的参数，这里指小数位
+                return '¥' + input.toFixed(decimal);
+            }
+        },
+        methods:{
+            sum(){
+                return this.products.reduce((prev,next) => {
+                    console.log(next.isSelected);
+                    if(!next.isSelected) return prev;    //如果当前没被选中，就不加当前这一项
+                    return prev+next.productPrice*next.productAmount
+                }, 0)
+            },
+            oneChange(){  //根据下面点击的结果控制上面全选的结果
+                this.checkAll = this.products.every(item => item.isSelected)
+                //every:判断数组中的每个元素是否符合条件，所有元素都满足条件返回true，有一个元素不满足返回false
+            },
+            allChange(){ //根据当前自己的状态设置其他人的状态，实现全选和反选
+                // alert(this.checkAll);
+                this.products.forEach(item => item.isSelected=this.checkAll)
+            },
+            remove(p){  //p代表的是当前点击的这一项[xxx,ppp,ooo,p]
+                this.products = this.products.filter(item => item!==p)
+            },
+            getData(){
+                axios.get('cart.json').then(res => { //success
+                    // console.log(res);
+                    this.products = res.data;
+                    this.oneChange();  //数据获取完成后给 checkAll赋予默认值
+
+                },err => {  //failed
+                    console.log(err);
+                })
+            }
+
+        },
+        // //专门用来发送ajax的方法
+        // created(){ // 在数据被初始化后会调用，this指向指向指的也是vm实例，钩子函数（回调函数中的this指的是windows，用箭头函数可以解决这个问题，让this指向vm实例）
+        //     axios.get('cart.json').then(res => { //success
+        //         // console.log(res);
+        //         this.products = res.data; //function(){}这样写不生效：回调函数中的this指的是windows，用箭头函数可以解决这个问题，让this指向vm实例
+        //     },err => {  //failed
+        //         console.log(err);
+        //     })
+        // },
+        created(){ // 在数据被初始化后会调用，this指向指向指的也是vm实例，钩子函数
+            this.getData();
+
+        },
+        data:{
+            products:[],
+            checkAll:false,
+        }
+    })
+
+</script>
+</body>
+</html>

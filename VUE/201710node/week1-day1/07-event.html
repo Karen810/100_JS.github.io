@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>event</title>
+</head>
+<body>
+<div id="app">
+    <!--调用方法的时候有参数的话加括号，没有参数的时候不加括号-->
+    <!--<div v-on:mousedown="fn">点我啊</div>-->
+    <div @mousedown="fn($event,1)">点我啊</div>
+
+</div>
+
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        methods:{ //methods和data中的数据全部放到vm上，而且名字不能冲突，冲突会报错，methods中的this 指向的都是实例
+            // fn(){alert(this)}
+            fn(event,a){
+                console.log(event);
+            }
+        },
+        data:{
+            //都是数据
+        }
+    })
+</script>
+
+</body>
+</html>

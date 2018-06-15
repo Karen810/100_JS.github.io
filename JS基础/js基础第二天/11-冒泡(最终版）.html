@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var arr = [7,6,5,4,3,2,1];
+    //需求：冒泡排序
+    //理论：
+    // 1、比较轮数： n-1；
+    // 2、比较次数： n-1；
+    // 3、符合某个条件交换位置
+
+    // 核心： 双重for循环
+
+    var m = 0;
+    var n = 0;
+
+    // 步骤：
+    // 1、双重for循环（外循环控制轮数）
+    for(var i=0; i<arr.length-1; i++){
+        // 如果本次比较没有移动任何元素，说明已经比较完毕
+        //开闭原则
+        var bool = true;
+        //var bool = true; 写在第一个for循环里，是为了每轮计较初始化bool变量为true
+
+        // 2、指定轮数和次数（内循环控制次数）
+        for(var j=0; j<arr.length-1-j; j++){
+            // 3、看是否符合标准，符合标准交换位置
+            if(arr[j] > arr[j+1]){
+                var temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+                bool = false;
+            }
+            m++;
+        }
+        n++;
+
+        //bool这个变量默认值为true；如果本轮比较有一对元素交换位置，那么也不能跳出循环；
+        //如果本轮比较没有任何元素相互交换位置，说明已经比较完成，可以跳出循环。
+
+
+        if(bool == false){
+            break;
+        }
+
+    }
+    console.log(m);
+    console.log(arr)
+
+</script>
+
+</body>
+</html>

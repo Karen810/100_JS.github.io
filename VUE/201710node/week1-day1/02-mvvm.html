@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mvvvm</title>
+</head>
+<body>
+<div id="app">
+    <!--所有指令都是以v-开头，value属性默认情况下会被vue忽略掉 selected、checked都没有意义-->
+    <!--v-model会将msg的值赋予输入框，输入框的值改变了会影响数据-->
+    <input type="text" v-model="msg">
+    {{msg}}
+
+    <br>
+    <p>----------------------------</p>
+    <br>
+
+    <!--v-text === {{}},防止{{}}出现在页面上-->
+    <div>{{msg}}</div>
+    <div v-text="msg"></div>
+
+    <br>
+    <p>----------------------------</p>
+    <br>
+
+    <!--v-once只绑定一次，当数据将再次发生变化也不导致页面刷新-->
+    <div v-once>
+        {{msg}} {{msg}}
+    </div>
+
+    <br>
+    <p>----------------------------</p>
+    <br>
+
+    <div v-html="p"></div>
+
+
+</div>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            msg:'hello~',
+            p:'<h1>This is a tag called P</h1>'
+        }
+    })
+</script>
+</body>
+</html>

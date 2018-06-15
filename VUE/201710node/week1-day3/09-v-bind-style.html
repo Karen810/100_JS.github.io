@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态绑定行内样式</title>
+    <!--视频时间点分布-->
+    <!--动态绑定行内样式style：31分-->
+</head>
+<body>
+<div id="app">
+    <!--对象的方式绑定:注意：要驼峰式命名-->
+    <div style="font-size:30px;" :style="{backgroundColor:'red', color:'yellow'}">我很帅</div>
+    <br>
+
+    <!--数组的方式绑定:注意：要驼峰式命名-->
+    <div :style="[sty1, sty2, {fontSize:'30px'}]">我非常帅</div>
+
+</div>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            sty1:{backgroundColor:'red'},
+            sty2:{color:'yellow'},
+            flag:true
+        }
+    })
+
+</script>
+</body>
+</html>

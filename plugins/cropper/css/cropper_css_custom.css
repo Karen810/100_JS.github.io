@@ -1,0 +1,63 @@
+#user-photo {
+    width:150px;
+    height:150px;
+}
+#photo {
+    max-width:100%;
+    max-height:350px;
+}
+.img-preview-box {
+    text-align: center;
+}
+.img-preview-box > div {
+    display: inline-block;;
+    margin-right: 10px;
+}
+.img-preview {
+    overflow: hidden;
+}
+.img-preview-box .img-preview-lg {
+    width: 150px;
+    height: 150px;
+}
+.img-preview-box .img-preview-md {
+    width: 100px;
+    height: 100px;
+}
+.img-preview-box .img-preview-sm {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.upload {
+    position: relative;
+}
+.upload .btn_upload {
+    position: absolute;
+    right: 0px;
+    top: -36px;
+    font-size: 14px;
+    padding: 2px 9px;
+}
+.modal-dialog {
+    font-family: 'c_r', Arial, sans-serif;
+}
+.modal-dialog .btn {
+    font-size: 14px;
+    height: 38px;
+    border-radius: 0px;
+    padding: 0px 20px;
+}
+.modal-dialog .btn_cancle {
+    color: #3366ff;
+    background: #fff;
+    border: 1px solid #3366ff;
+}
+.modal-dialog .btn_open_photo {
+    background: #d9534f;
+    line-height: 38px;
+}
+.modal-dialog .btn_open_photo:hover {
+    background: #d9534f;
+}

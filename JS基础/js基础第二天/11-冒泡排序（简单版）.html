@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var arr = [7,6,5,4,3,2,1];
+    //需求：冒泡排序
+    //理论：
+    // 1、比较轮数： n-1；
+    // 2、比较次数： n-1；
+    // 3、符合某个条件交换位置
+
+    // 核心： 双重for循环
+
+    // 步骤：
+    // 1、双重for循环（外循环控制轮数）
+    for(var i=0; i<arr.length-1; i++){
+        // 2、指定轮数和次数（内循环控制次数）
+        for(var j=0; j<arr.length-1; j++){
+            // 3、看是否符合标准，符合标准交换位置
+            if(arr[j]>arr[j+1]){
+                var temp = arr[j];  //为什么要定义临时变量? 因为：比如arr[1]=3, arr[2]=2,这是比较他俩的大小，arr[1]大，所以他俩要调换位置，也就是把arr[2]的值赋值给arr[1]（见下行代码），这是arr[1]的值变成了2,。如果不事先把arr[1]=3先存到临时变量里，给用arr[1]给arr[2]赋值的时候就是已经变成2的值，而不是最初的3
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+
+
+            }
+        }
+
+    }
+    console.log(arr);
+
+</script>
+
+</body>
+</html>

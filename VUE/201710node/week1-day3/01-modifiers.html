@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--向上是冒泡，向下是捕获-->
+
+
+    <!--点击grandson的时候会向上冒泡-->
+    <!--vue的事件修饰符.stop可以阻止冒泡-->
+    <!--<div @click="parent">parent-->
+        <!--<div @click="child">child-->
+            <!--<div @click.stop="grandson">grandson</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+    <!--stopPropagation 阻止事件传播-->
+
+    <div @click.capture="parent">parent
+        <div @click.capture="child">child
+            <div @click="grandson">grandson</div>
+        </div>
+    </div>
+
+    <a href="http://baidu.com" @click.prevent="parent">百度</a>
+
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        methods:{
+            parent(){
+              alert('parent');
+            },
+            child(){
+                alert('child');
+            },
+            grandson(e){
+                alert('grandson');
+                // e.stopPropagation() //阻止冒泡
+            },
+        },
+        data:{
+
+        }
+    })
+</script>
+</body>
+</html>

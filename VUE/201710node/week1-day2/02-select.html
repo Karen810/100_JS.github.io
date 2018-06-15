@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [v-cloak]{display: none;}
+    </style>
+</head>
+<body>
+<div id="app" v-cloak>
+    <select v-model="a" multiple>
+        <!--如果value属性不写，默认取的是option的值，请选择这一项要加disabled-->
+        <!--如果select是多选框,则数据类型是多选框-->
+        <option value="" disabled>请选择</option>
+        <option value="1">你好</option>
+        <option value="2">不好</option>
+        <option value="3">我好</option>
+    </select>
+    {{a}}
+
+    <input type="radio" v-model="gender" value="man">man
+    <input type="radio" v-model="gender" value="woman">woman
+    {{gender}}
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            a:[],
+            gender:[]
+        }
+    })
+</script>
+</body>
+</html>

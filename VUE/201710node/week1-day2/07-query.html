@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../node_modules/animate.css/animate.css">
+    <style>
+        #app>div {
+            width: 100px;
+            height: 100px;
+            background: #f00;
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+<div id="app">
+
+    <button @click="flag=!flag">切换</button>
+
+    <input type="text" v-model="query">
+
+    <transition-group enter-active-class="animated fadeInDown" leave-active-class="animated fadeOutUp">
+        <!--<div v-for="(a,index) in arr" :key="index">{{a}}</div>-->
+
+        <!--符合条件的元素放到这个新数组中展示出来-->
+        <!--v-for默认会复用原有的dom元素，如果加了key而且key不同，才会认为他们是不同的元素，动画效果才会每次都执行-->
+        <div v-for="(a,index) in newArr" :key="Math.random()">{{a}}</div>
+    </transition-group>
+
+
+
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        computed:{
+            newArr(){
+                // 数组的元素与搜索的值相等时，改元素被放到新数组中
+                return this.arr.filter(item => item==this.query);
+            }
+        },
+        data:{
+            query:'',
+            flag:true,
+            arr:[1,2,3,4,5,1]
+        }
+    })
+</script>
+</body>
+</html>

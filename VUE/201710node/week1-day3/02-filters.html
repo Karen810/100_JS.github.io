@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全局过滤器</title>
+
+</head>
+<body>
+<div id="app">
+    <div id="app1">{{text | myFilter}}</div>
+    <div id="app2">{{text | myFilter}}</div>
+
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    // 全局过滤器，注意filter不带s，要放在页面的顶部
+    Vue.filter('myFilter',(data,param1) => {
+        return 'xl'+data;
+    });
+    let vm1 = new Vue({
+        el:'#app1',
+        // filters:{
+        //     myFilter(data,param1){
+        //         return 'xl'+data;
+        //     }
+        // },
+        data:{
+            text:'hello'
+
+        }
+    });
+    let vm2 = new Vue({
+        el:'#app2',
+        data:{
+            text:'hello'
+
+        }
+    })
+</script>
+</body>
+</html>

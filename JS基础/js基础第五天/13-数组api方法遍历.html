@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var arr = ["关羽","张飞","赵云","马超","黄忠"];
+
+    arr.every(function (element,index,array) {
+        element = "aaa";
+        arr[index] = 'aaa';
+        console.log(element);
+        console.log(index);
+        console.log(array);
+
+        return true;
+    })
+
+
+</script>
+</body>
+</html>

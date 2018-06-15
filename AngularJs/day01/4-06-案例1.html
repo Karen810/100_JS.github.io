@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = 'Tabs'>
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS 数据绑定</title>
+    <style>
+        ol {
+            list-style-type: none;
+            padding: 0;
+            display: inline-block;
+        }
+        nav {
+            overflow: hidden;
+        }
+        nav a {
+            color: #fff;
+            float: left;
+            padding: 3px 6px;
+            background: #ff6a04;
+            border-right: 1px solid #00b7ee;
+            cursor: pointer;
+        }
+        nav a:last-child {
+            border: none;
+        }
+        nav a.active {
+            background: #ff2a06;
+        }
+        ol {
+            background: #ffdde0;
+        }
+    </style>
+</head>
+<body>
+<div ng-controller="TabsController">
+    <div>
+        <nav>
+            <a ng-click="switch('beijing')" ng-class="{active: type=='beijing'}">北京新闻</a>
+            <a ng-click="switch('henan')" ng-class="{active: type=='henan'}">河南新闻</a>
+            <a ng-click="switch('newyork')" ng-class="{active: type=='newyork'}">纽约新闻</a>
+            <a ng-click="switch('tokyo')" ng-class="{active: type=='tokyo'}">东京新闻</a>
+        </nav>
+
+        <div ng-switch on="type">
+            <section ng-switch-when="beijing">
+                <ol>
+                    <li>北京新闻111111</li>
+                    <li>北京新闻222222</li>
+                    <li>北京新闻333333</li>
+                    <li>北京新闻444444</li>
+                    <li>北京新闻555555</li>
+                </ol>
+            </section>
+            <section ng-switch-when="henan">
+                <ol>
+                    <li>河南新闻111111</li>
+                    <li>河南新闻222222</li>
+                    <li>河南新闻333333</li>
+                    <li>河南新闻444444</li>
+                    <li>河南新闻555555</li>
+                </ol>
+            </section>
+            <section ng-switch-when="newyork">
+                <ol>
+                    <li>纽约新闻111111</li>
+                    <li>纽约新闻222222</li>
+                    <li>纽约新闻333333</li>
+                    <li>纽约新闻444444</li>
+                    <li>纽约新闻555555</li>
+                </ol>
+            </section>
+            <section ng-switch-when="tokyo">
+                <ol>
+                    <li>东京新闻111111</li>
+                    <li>东京新闻222222</li>
+                    <li>东京新闻333333</li>
+                    <li>东京新闻444444</li>
+                    <li>东京新闻555555</li>
+                </ol>
+            </section>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="../../plugins/angular/1.3.8/angular-1.3.8.min.js"></script>
+<script>
+    var Tabs = angular.module('Tabs',[]);
+    Tabs.controller('TabsController', ['$scope', function($scope){
+
+        $scope.type = 'beijing';
+        $scope.key = 'beijing';
+
+        $scope.switch = function(type){
+            $scope.type = type;
+
+        }
+
+    }])
+
+</script>
+</body>
+</html>

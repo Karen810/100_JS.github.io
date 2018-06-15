@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .top-banner {
+            background: pink;
+        }
+        .w {
+            width: 1210px;
+            margin: 10px auto;
+            position: relative;
+        }
+        img {
+            width: 1210px;
+            height: 80px;
+            background: blue;
+        }
+        a {
+            position: absolute;
+            top: 5px;
+
+        }
+    </style>
+</head>
+<body>
+<div class="top-banner">
+    <div class="w">
+        <img src="" alt="">
+
+    </div>
+</div>
+
+
+
+<script>
+    // 需求：点击按钮，隐藏盒子
+    document.getElementById('btn').onclick = function (ev) {
+        document.getElementsByClassName('top-banner').className += ' hide';
+    }
+
+
+    document.getElementById('box').onmouseover = function (ev) {
+        document.getElementById('pic').src = "";
+    };
+    document.getElementById('box').onmouseout = function (ev) {
+        document.getElementById('pic').src = "";
+    }
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 求圆的周长
+
+    // var long1 = getLong(0.5);
+    // console.log(long1);
+
+    // function getLong(r) {
+    //     var π = 3.141592653;
+    //     var l = 2 * π * r;
+    //     return l;
+    // }
+
+    //圆的面积=πr²     周长=2πr
+    // var area1 = getArea(2);
+    // alert(area1);
+    //
+    // function getArea(r) {
+    //     var π = 3.141592653;
+    //     // var area = π * r * r;
+    //     var area = Math.PI * Math.pow(r,2);
+    //
+    //     return area;
+    // }
+
+    // console.log(Math.PI);
+    // console.log(Math.pow(r,2))
+
+
+
+
+    // 求2个数中的最大值
+
+    // console.log(getMax(2,1));
+    //
+    // function getMax(num1, num2) {
+        // 方法1：
+        // if(num1 > num2){
+        //     return num1;
+        // }else{
+        //     return num2;
+        // }
+
+        // 方法2：
+        // if(num1 > num2){
+        //     return num1;
+        // }
+        // return num2;
+
+        // 方法3：三元运算符
+        // return num1>num2?num1:num2;
+
+    // }
+
+
+
+
+
+    // 求3个数中的最大值
+
+    // console.log(getMaxThree(1,2,3));
+    // function getMaxThree(a, b, c) {
+        // 方法1： 三元运算符
+        // var d = a>b?a:b;
+        // return d>c?d:c;
+
+
+        //方法2： 三元运算符  精简版
+        // return (a>b?a:b)>c?(a>b?a:b):c;
+
+
+        //方法3：:
+        // if(a>b){
+        //     if(a>c){
+        //         return a;
+        //     }else{
+        //         return b;
+        //     }
+        // }else{
+        //     if(b>c){
+        //         return b;
+        //     }else{
+        //         return c;
+        //     }
+        // }
+
+
+        //方法4：
+    //     if(a>b){
+    //         if(a>c){
+    //             return a;
+    //         }
+    //         return b;
+    //     }else{
+    //         if(b>c){
+    //             return b;
+    //         }
+    //         return c;
+    //     }
+    //
+    // }
+
+
+
+
+
+
+
+
+    // 求一组数中的最大值
+
+    // var arr = [-3, -2, -1, 0, 1, 2, 3]
+    //
+    // var maxValue = getArrMax(arr);
+    // console.log(maxValue);
+    // console.log(getArrMax(arr));
+    //
+    // function getArrMax(array) {
+    //     // 用的必须是形参的数组中的第一项
+    //     var max = array[0];
+    //     for(var i=1; i<array.length; i++){
+    //         if(array[i] > max){
+    //             max = array[i];
+    //         }
+    //     }
+    //     return max;
+    // }
+
+
+
+    // 求一组数中的最小值（函数嵌套）
+
+    // var arr1 = [-3, -2, -1, 0, 1, 2, 3];
+    // console.log(getArrMin(arr1));
+    //
+    // function getArrMin(array) {
+    //     // 把数组中的第一位默认为最小值
+    //     var min = array[0];
+    //     for(var i=1; i<array.length; i++){
+    //         if(array[i] < min){
+    //             min = array[i];
+    //         }
+    //     }
+    //     return min;
+    // }
+
+
+
+    // 翻转数组，返回一个新数组
+
+    // 用两种方法做，第一种创建新数组，第二种直接修改原数组
+    // var arr2 = [1,2,3];
+    //
+    // console.log(reverse1(arr2));
+    //
+    //定义一个新数组，把老数组中的函数反向添加到新数组中
+    // function reverse1(array) {
+    //     var newArr = [];
+    //
+    //     for(var i=array.length-1; i>=0; i--){
+    //         newArr[newArr.length] = array[i];
+    //     }
+    //     return newArr;
+    // }
+    
+    
+
+    // var arr1 = [1,2,3];
+    // console.log(reverse2(arr1));
+    //
+    // function reverse2(array) {
+    //     for(var i=0; i<array.length/2; i++){
+    //         var temp = array[i];
+    //         array[i] = array[array.length-1-i];
+    //         array[array.length-1-i] = temp;
+    //     }
+    //     return array;
+    // }
+
+    
+    
+
+    // 对数组排序，从小到大(冒泡排序)
+
+    var arr = [4,8,1,0];
+
+    console.log(bubble(arr));
+
+    function bubble(array) {
+        //外循环控制轮数（元素个数-1）
+        for(var i=0; i<array.length-1; i++){
+            // 内循环控制次数（元素个数-1）
+            for(var j=0; j<array.length-1; j++){
+                if(array[j] > array[j+1]){
+                    var temp = array[j];
+                    array[j] = array[j+1];
+                    array[j+1] = temp;
+                }
+            }
+        }
+
+        return array;
+
+    }
+
+
+    //// 对数组排序，从小到大(冒泡排序)  另一版本（不太懂,好像不对）
+    // var arr = [4,8,1,0];
+    //
+    // var m = 0;
+    // var n = 0;
+    //
+    // console.log(bubble(arr));
+    //
+    //
+    //
+    // function bubble(array) {
+    //     //外循环控制轮数（元素个数-1）
+    //     for(var i=0; i<array.length-1; i++){
+    //         // 内循环控制次数（元素个数-1）
+    //
+    //         var flag = true;
+    //
+    //         for(var j=0; j<array.length-1-i; j++){
+    //             if(array[j] > array[j+1]){
+    //                 var temp = array[j];
+    //                 array[j] = array[j+1];
+    //                 array[j+1] = temp;
+    //                 flag = false;
+    //             }
+    //             m++;
+    //         }
+    //         n++;
+    //
+    //         if(flag == false){
+    //             return array;
+    //         }
+    //     }
+    // }
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

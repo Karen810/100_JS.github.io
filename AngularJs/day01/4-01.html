@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app='App'>
+    <ul ng-controller="DemoController">
+        <li ng-bind="name"></li>
+        <li ng-cloak>{{name}}{{age}}</li>
+        <li ng-bind-template="{{name}} {{age}}"></li>
+    </ul>
+
+
+<script src="../../plugins/angular/1.3.8/angular-1.3.8.min.js"></script>
+<script>
+    var App = angular.module('App',[]);
+
+    App.controller('DemoController', ['$scope', function($scope){
+        //$scope 就是 model
+
+        $scope.name = 'itcast';
+        $scope.age = '20';
+
+
+    }])
+
+</script>
+</body>
+</html>

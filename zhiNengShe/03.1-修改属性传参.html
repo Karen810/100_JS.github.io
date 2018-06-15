@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: #000;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="变红" id="btn1" >
+<input type="button" value="变黄" id="btn2" >
+<input type="button" value="变绿" id="btn3" >
+<div id="div1"></div>
+
+<script>
+    var oBtn1 = document.getElementById('btn1');
+    var oBtn2 = document.getElementById('btn2');
+    var oBtn3 = document.getElementById('btn3');
+    var oDiv = document.getElementById('div1');
+
+    //第二种方式： []
+    // oBtn1.onclick = function () {
+    //     oDiv.style.background = 'red';
+    // };
+    // oBtn2.onclick = function () {
+    //     oDiv.style.background = 'yellow';
+    // };
+    // oBtn3.onclick = function () {
+    //     oDiv.style.background = 'green';
+    // }
+
+    function setColor(color) {
+        oDiv.style.background = color;
+    }
+
+
+    //这样写是错误的
+    // oBtn1.onclick = setColor('red');
+
+    //要用匿名函数把要调用的函数包起来，否则不生效也不报错，虐死你
+    oBtn1.onclick = function () {
+        setColor('red');
+    };
+    oBtn2.onclick = function () {
+        setColor('yellow');
+    };
+    oBtn3.onclick = function () {
+        setColor('green');
+    }
+
+
+</script>
+</body>
+</html>

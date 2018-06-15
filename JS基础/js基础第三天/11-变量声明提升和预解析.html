@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     * 预解析：js的解析器在页面加载的时候，首先检查页面上的语法错误。把变量声明提升起来：只提升变量名，而不提升变量值。而用function直接定义的方法是整体提升。
+     * 1、查看语法错误；
+     * 2、变量声明提升和函数整体提升（变量声明提升的时候只提升变量名，不提升变量值）
+     * 3、函数范围内部，照样适用。
+     */
+
+    // fn();   //虽然函数在下面定义的，但是也可以执行，这就是预解析
+
+
+    // console.log(aaa);
+    //var aaa;    //undefined
+    var aaa;
+    aaa = 111;    //undefined：因为只提升了变量名var aaa，不提升变量值111
+    fn();
+
+    function fn(bbb) {
+        // 变量声明提升在函数内部照样适用
+        //函数的就近原则
+        console.log(aaa);   //
+        var aaa = 222;
+    }
+
+
+    function fn2(bbb) {
+        // 参数相当于局部变量
+        // 两个平级函数中的变量不会相互影响
+        console.log(bbb);
+    }
+
+
+
+</script>
+</body>
+</html>

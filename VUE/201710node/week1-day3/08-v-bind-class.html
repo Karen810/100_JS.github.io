@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--视频时间点分布-->
+    <!--动态绑定class：对象的方式：3-4-22分-->
+    <!--动态绑定class：数组的方式：24分20秒-->
+    <!--隔行变色案例：26分-->
+    <style>
+        .x{
+            background: #f00;
+            width: 200px;
+            height:200px;
+        }
+        .y {
+            color: yellow;
+        }
+        .z{
+            border: 3px solid green;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--动态绑定class和行内style通常使用的方式有两种：一、对象的方式；二、数组的方式-->
+
+
+    <!-- class绑定的样式与:class绑定的样式不冲突 -->
+
+    <!--第一种：对象的方式绑定   {className:isActive}   isActive=true就激活，否则不激活-->
+    <div class="x" :class="{y:flag, z:flag}">I am who am I?</div>
+    <br>
+
+    <!--第二种：数组的方式绑定   先在data获取到class -->
+    <div class="x" :class="[class1, class2, {x:false}]">I am who am I?</div>
+</div>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            class1:'z',
+            class2:'y',
+            flag:true
+        }
+    })
+</script>
+</body>
+</html>

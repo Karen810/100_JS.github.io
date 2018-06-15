@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // //需求：翻转数组
+    // var arr = ['111','222','333','444','555'];
+    // var newArr = [];
+    // for(var i=0; i<arr.length; i++){
+    //     newArr[newArr.length] = arr[(arr.length-1)-i];
+    //
+    //     // newArr[i] = arr[(arr.length-1)-i];
+    // }
+    // console.log(newArr);
+
+
+    var arr = ['111','222','333','444','555'];
+    for(var i=0; i<(arr.length/2); i++){
+        var temp = arr[i];
+        arr[i] = arr[(arr.length-1)-i];
+        arr[(arr.length-1)-i] = temp;  //不理解
+
+    }
+    console.log(arr);
+
+</script>
+</body>
+</html>

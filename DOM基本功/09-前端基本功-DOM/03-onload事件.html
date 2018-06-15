@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 主要用途：
+    // js的加载是和html同步加载的。（如果使用元素在定义元素之前，容易报错）
+    // 整个页面上所有元素加载完毕再执行js内容
+    // window.onload可以预防使用标签在定义标签之前
+    window.onload = function(){
+        alert(1);
+    }
+
+
+
+</script>
+</body>
+</html>

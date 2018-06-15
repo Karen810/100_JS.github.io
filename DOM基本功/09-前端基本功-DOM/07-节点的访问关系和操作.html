@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box1">
+    <div id="box2"></div>
+    <div id="box3"></div>
+</div>
+
+<script>
+    // //节点的操作
+    // // 1、创建
+    // var aaa = document.createElement("li");
+    // var bbb = document.createElement('abdhfj');
+    // // console.log(aaa);
+    //
+    //
+    // // 2、添加
+    // var box1 = document.getElementById('box1');
+    // console.log(box1);
+    // box1.appendChild(aaa);
+    // box1.insertBefore(bbb,aaa);
+
+    // 删除
+    // var box2 = document.getElementById('box2');
+    // box1.removeChild(box2);
+
+    // 克隆
+    var box1 = document.getElementById('box2');
+    var ccc = box1.cloneNode();
+    console.log(ccc);
+    var ddd = box1.cloneNode(true);
+    console.log(ddd);
+
+
+</script>
+</body>
+</html>

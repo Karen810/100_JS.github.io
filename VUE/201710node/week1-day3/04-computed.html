@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>computed 计算属性</title>
+    <!-- 3-2：31分10秒 -->
+</head>
+<body>
+    <div id="app">
+        <!--输入框 校验信息-->
+        <input type="text" v-model="val">
+        <!--思路：根据输入框中的内容，算出一个错误信息，所以是获取，要用get，只有get的时候可以简写成函数的形式-->
+        <p>{{errMsg}}</p>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:'#app',
+            computed:{   //computed默认调用get方法，get必须有return，computed不支持异步
+                errMsg(){
+                    if(this.val.length < 3){
+                        return '最少三个字';  //return是为了不让程序往下走了
+                    }
+                    if(this.val.length > 6){
+                        return '最多六个字';
+                    }
+                    //如果没有以上这些情况就返回空字符，也即不显示
+                    return ''
+                }
+            },
+            data:{
+                val:''
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS 指令</title>
+    <style>
+        .red {
+            color: red;
+        }
+        .blue {
+            color: blue;
+        }
+    </style>
+</head>
+<body ng-app="App">
+    <div ng-include="'./header.html'"></div>
+
+    <ul ng-controller="DemoController">
+        <li ng-bind="name"></li>
+        <li>{{name}}</li>
+        <li ng-show="false">ng-show用来显示或隐藏内容的</li>
+        <li ng-hide="true">ng-hide</li>
+        <li ng-if="false">ng-if用来控制元素是否存在</li>
+        <li><img ng-src="{{path}}" alt=""></li>
+        <li ng-class="{red:true, blue:true}">ng-class指令</li>
+    </ul>
+
+    <div ng-include="'./footer.html'"></div>
+
+
+    <script src="../../plugins/angular/1.3.8/angular-1.3.8.min.js"></script>
+    <script>
+        var App = angular.module('App',[]);
+
+        App.controller('DemoController',['$scope', function($scope){
+            //$scope
+
+            $scope.name = 'itcast';
+            $scope.path = '../../images/1.jpg';
+
+            $scope.link = './main/css';
+
+        }])
+
+    </script>
+</body>
+</html>

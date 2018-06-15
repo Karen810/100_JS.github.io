@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: #000;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="变宽" id="btn1">
+<input type="button" value="变高" id="btn2">
+<input type="button" value="变色" id="btn3">
+<div id="div1"></div>
+
+<script>
+    var oDiv = document.getElementById('div1');
+    var oBtn1 = document.getElementById('btn1');
+    var oBtn2 = document.getElementById('btn2');
+    var oBtn3 = document.getElementById('btn3');
+    function setStyle(name, value) {
+        oDiv.style[name] = value;   //[]可以代替“.”，如果不是变量需要带上引号['name']，如果是变量就不带引号[name]
+    }
+    oBtn1.onclick = function () {
+        setStyle('width', '200px')
+    };
+    oBtn2.onclick = function () {
+        setStyle('height', '200px')
+    };
+    oBtn3.onclick = function () {
+        setStyle('background', 'red')
+    }
+</script>
+
+</body>
+</html>

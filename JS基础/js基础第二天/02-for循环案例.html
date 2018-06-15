@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // // 需求：计算从1乘到100的积
+    // // 计数器
+    // var product = 1;
+    // for(var i=1; i<=100; i++){
+    //     product *= i;
+    // }
+    // alert(product);
+
+
+    // //需求： 计算出1-100之间所有不能被7整除的整数的数字之和
+    // var sum = 0;
+    // for(var i=1; i<=100; i++){
+    //     if(i%7 !== 0){
+    //         sum += i;
+    //     }
+    // }
+    // alert(sum);
+
+
+    //计算出1-100之间所有不能被3整除的整数的和大于（或等于）2000的数字；
+    var sum = 0;
+    for(var i=1; i<=100; i++){
+        if(i%3 !== 0){
+            sum += i;
+            if(sum >= 2000){
+                console.log(i);
+            }
+        }
+
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

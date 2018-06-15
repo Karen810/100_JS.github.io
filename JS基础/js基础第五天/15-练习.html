@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 每个元素在数组中出现的次数
+    // var arr5 = ["c","a","x","a","x","a"];
+    //
+    // var json = {};
+    // // console.log(json["ads"]);  //undefined
+    // for(var i=0; i<arr5.length; i++){
+    //     // 判断数组中的元素，在json中是否存在属性值
+    //     if(json[arr5[i]]){
+    //         json[arr5[i]] += 1;
+    //     }else{
+    //         json[arr5[i]] = 1;
+    //     }
+    // }
+    //
+    // console.log(json);
+
+
+
+
+    // 编写一个方法 去掉数组的重复元素
+    var arr = [1,2,3,4,5,2,3,4];
+    console.log(arr);
+    var aaa = fn(arr);
+    console.log(aaa);
+
+
+    //思路：创建一个新数组，循环遍历，只要新数组中有老数组的值，就不用再添加
+
+    function fn(array) {
+        var newArr = [];
+        for(var i=0; i<array.length; i++){
+            var bool = true;
+            for(var j=0; j<newArr.length; j++){
+                if(arr[i] === newArr[j]){
+                    bool = false;
+                }
+            }
+            if(bool){
+                newArr[newArr.length] = array[i];
+            }
+        }
+        return newArr;
+
+    }
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

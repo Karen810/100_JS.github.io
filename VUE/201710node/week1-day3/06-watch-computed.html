@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>watch-computed</title>
+    <!-- 3-3：15分 -->
+    <!--命令式的 vm.$watch  3-3：24分54秒-->
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="val">
+    {{fullName}}
+</div>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        computed:{
+            fullName(){
+                return this.firstName + this.val + this.lastName;
+            }
+        },
+        data:{
+            val:'',
+            firstName:'zfpx',
+            lastName:'xl',
+        }
+    })
+
+</script>
+</body>
+</html>

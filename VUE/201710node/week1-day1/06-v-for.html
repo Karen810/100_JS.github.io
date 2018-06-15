@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for</title>
+</head>
+<body>
+<div id="app">
+<!--要循环谁就在谁的身上增加v-for属性-->
+<!--默认是:value of/in 数组    (value,index) of/in 数组-->
+    <ul>
+        <li v-for="(fruit,index) in fruits">
+            {{fruit.name}} {{index+1}}
+
+            <ul>
+                <li v-for="(color,colorIndex) in fruit.color">{{index+1}}.{{colorIndex+1}} {{color}}</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            fruits:[
+                {name: 'banana', color: ['green','yellow']},
+                {name: 'apple', color: ['red','green']},
+                {name: 'watermelon', color: ['pink']}
+            ]
+        }
+    })
+</script>
+</body>
+</html>
