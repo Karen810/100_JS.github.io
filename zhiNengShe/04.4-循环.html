@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: #000;
+            margin: 5px;
+            float: left;
+        }
+    </style>
+    <script>
+        window.onload = function (ev) {
+            var oDiv = document.getElementsByTagName('div');
+
+            // alert(oDiv.length);
+
+
+            for(var i=0; i<oDiv.length; i++){
+                oDiv[i].style.background = 'red';
+            }
+        }
+    </script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

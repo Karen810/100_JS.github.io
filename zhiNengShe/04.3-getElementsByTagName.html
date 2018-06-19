@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: #000;
+            margin: 5px;
+            float: left;
+        }
+    </style>
+    <script>
+        window.onload = function (ev) {
+            var oDiv = document.getElementsByTagName('div');
+            //getElementsByTagName 取到的是一个数组！数组！数组！
+
+            alert(typeof oDiv);
+            alert(oDiv.length);
+
+    </script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

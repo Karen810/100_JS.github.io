@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #content div {
+            width: 100px;
+            height: 100px;
+            background: #f0ad4e;
+            border: 1px solid #f00;
+            margin-top: 5px;
+            display: none;
+        }
+        #content div:first-child {
+            display: block;
+        }
+        #div1 input.active {
+            background: yellow;
+        }
+    </style>
+
+    <script>
+        window.onload = function (ev) {
+            var oDiv = document.getElementById('div1');
+            var oBtn = oDiv.getElementsByTagName('input');
+
+            var oContent = document.getElementById('content');
+            var aDiv = oContent.getElementsByTagName('div');
+
+            for(var i=0; i<oBtn.length; i++){
+                oBtn[i].index = i;
+                oBtn[i].onclick = function () {
+                    debugger
+
+                    for (var i = 0; i < oBtn.length; i++) {
+                        oBtn[i].className = '';
+                        aDiv[i].style.display = 'none';
+                    }
+                    this.className = 'active';
+                    aDiv[this.index].style.display = 'block';
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <input type="button" value="tab1" class="active">
+        <input type="button" value="tab2">
+        <input type="button" value="tab3">
+        <input type="button" value="tab4">
+
+        <div id="content">
+            <div>1111</div>
+            <div>2222</div>
+            <div>3333</div>
+            <div>4444</div>
+
+        </div>
+    </div>
+</body>
+</html>

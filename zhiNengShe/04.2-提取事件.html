@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: #000;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        window.onload = function (ev) {
+            var oDiv = document.getElementById('div1');
+            var oBtn = document.getElementById('btn');
+
+            // function toRed() {
+            //     oDiv.style.background = 'red';
+            // }
+            // //第一种方法：
+            // oBtn.onclick = toRed;
+
+            //第二种方法：
+            oBtn.onclick = function (ev) {
+                oDiv.style.background = 'red';
+            }
+
+
+            // 事件其实也是一种属性，比如onclick
+
+            /* 提取事件有两种方法：
+            *   一。有名函数，调用函数名；
+            *   二。直接匿名函数
+            * */
+
+        }
+</script>
+</head>
+<body>
+    <div id="div1"></div>
+    <input type="button" value="点我" id="btn">
+
+
+</body>
+</html>

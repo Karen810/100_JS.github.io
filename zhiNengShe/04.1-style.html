@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: #000;
+            margin-bottom: 10px;
+        }
+        .red {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <input type="button" value="点我" id="btn">
+
+    <script>
+        var oDiv = document.getElementById('div1');
+        var oBtn = document.getElementById('btn')
+            
+
+        function toGreen() {
+            oDiv.style.background = 'green';
+
+        }
+
+        oBtn.onclick = function () {
+            toGreen();
+
+            oDiv.className = 'red';
+        }
+
+        //行内样式的优先级最高，如果先通过.style修改了行内样式，再想通过class修改样式是不生效的，因为优先级没有style（行内）高
+
+        
+    </script>
+</body>
+</html>

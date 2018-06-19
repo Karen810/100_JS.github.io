@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1 {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 190px;
+            margin: 0 auto;
+        }
+        input {
+            width: 50px;
+            height: 30px;
+            border: 1px solid #000;
+            margin: 5px;
+        }
+    </style>
+
+    <script>
+        window.onload = function (ev) {
+            var oMonthBtns = document.getElementsByTagName('input');
+
+            var month = document.getElementById('month');
+            var descr = document.getElementById('description');
+
+            for(var i=0; i<oMonthBtns.length; i++){
+                oMonthBtns[i].onclick = function(){
+                    month.innerHTML = i;
+
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="div1">
+    <div>
+        <input type="button" value="1月">
+        <input type="button" value="2月">
+        <input type="button" value="3月">
+        <input type="button" value="4月">
+        <input type="button" value="5月">
+        <input type="button" value="6月">
+        <input type="button" value="7月">
+        <input type="button" value="8月">
+        <input type="button" value="9月">
+        <input type="button" value="10月">
+        <input type="button" value="11月">
+        <input type="button" value="12月">
+    </div>
+
+    <div>
+        <h5><span id="month">1</span>月活动</h5>
+        <p id="description">1月回家过年热个回复的回复和东方红范德萨</p>
+    </div>
+</div>
+
+</body>
+</html>
