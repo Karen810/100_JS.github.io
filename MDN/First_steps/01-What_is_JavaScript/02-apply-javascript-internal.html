@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button onclick="creatParagraph()">Click me</button>
+
+    <script>
+        // window.onload = function () {  //!!!如果加上这个就会报错：creatParagraph is not defined
+            function creatParagraph() {
+                var para = document.createElement('p');
+                para.textContent = 'You clicked the button';
+                document.body.appendChild(para);
+            }
+
+
+            //方法一：
+            // var buttons = document.querySelectorAll('button');
+            //
+            // for(var i=0; i<buttons.length; i++){
+            //     buttons[i].addEventListener('click', creatParagraph);
+            // }
+
+        //方法二：内联 JavaScript 处理器（写在行内）
+
+        // }
+    </script>
+</body>
+</html>

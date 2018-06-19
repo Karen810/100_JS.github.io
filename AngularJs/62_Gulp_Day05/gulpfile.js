@@ -71,7 +71,7 @@ gulp.task('js', function(){
 
 //压缩html
 gulp.task('html', function(){
-    gulp.src(['./index.html','./views/*.html'], {base: './'})
+    gulp.src(['./01-index.html','./views/*.html'], {base: './'})
         .pipe(htmlmin({collapseWhitespace: true, removeConments: true, minify: true}))
         //removeConments：去掉注释   minify：压缩页面里面的js和css
         .pipe(gulp.dest('./release/'))
@@ -89,7 +89,7 @@ gulp.task('rev', function(){
 
 //useref  build两个css/js文件合并成一个文件并更改地址
 gulp.task('useref', function(){
-    gulp.src('./index.html')
+    gulp.src('./01-index.html')
         .pipe(useref())
 
         .pipe(gulpif('*.js', uglify()))
