@@ -10,25 +10,44 @@
             width: 190px;
             margin: 0 auto;
         }
-        input {
+        ul {
+            padding: 0;
+            height: 160px;
+        }
+        ul li {
             width: 50px;
             height: 30px;
-            border: 1px solid #000;
+            background: #383838;
+            border: 1px solid #383838;
+            color: #fff;
             margin: 5px;
+            float: left;
+            list-style: none;
+            text-align: center;
         }
+        .active {
+            background: #fff;
+            color: #ff4079;
+        }
+
+
     </style>
 
     <script>
         window.onload = function (ev) {
-            var oMonthBtns = document.getElementsByTagName('input');
+            var oBtns = document.getElementsByTagName('li');
+            var oActivity = document.getElementById('activity');
 
-            var month = document.getElementById('month');
-            var descr = document.getElementById('description');
+            var activityArr = ['1月。。。。。。','2月。。。。。。','3月。。。。。。','4月。。。。。。','5月。。。。。。','6月。。。。。。',]
 
-            for(var i=0; i<oMonthBtns.length; i++){
-                oMonthBtns[i].onclick = function(){
-                    month.innerHTML = i;
-
+            for(var i=0; i<oBtns.length; i++){
+                oBtns[i].index = i;
+                oBtns[i].onmouseover = function () {
+                    for(var i=0; i<oBtns.length; i++){
+                        oBtns[i].className = '';
+                    }
+                    this.className = 'active';
+                    oActivity.innerHTML = '<h4>'+ (this.index+1) +'月活动</h4><p>'+ activityArr[this.index] +'</p>'
                 }
             }
         }
@@ -36,24 +55,24 @@
 </head>
 <body>
 <div id="div1">
-    <div>
-        <input type="button" value="1月">
-        <input type="button" value="2月">
-        <input type="button" value="3月">
-        <input type="button" value="4月">
-        <input type="button" value="5月">
-        <input type="button" value="6月">
-        <input type="button" value="7月">
-        <input type="button" value="8月">
-        <input type="button" value="9月">
-        <input type="button" value="10月">
-        <input type="button" value="11月">
-        <input type="button" value="12月">
-    </div>
+    <ul>
+        <li>1月</li>
+        <li>2月</li>
+        <li>3月</li>
+        <li>4月</li>
+        <li>5月</li>
+        <li>6月</li>
+        <li>7月</li>
+        <li>8月</li>
+        <li>9月</li>
+        <li>10月</li>
+        <li>11月</li>
+        <li>12月</li>
+    </ul>
 
-    <div>
-        <h5><span id="month">1</span>月活动</h5>
-        <p id="description">1月回家过年热个回复的回复和东方红范德萨</p>
+    <div id="activity">
+        <h4>1月活动</h4>
+        <p>1月回家过年热个回复的回复和东方红范德萨</p>
     </div>
 </div>
 

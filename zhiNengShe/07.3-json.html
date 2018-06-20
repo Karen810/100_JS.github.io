@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var jData  = {
+                a: 10,
+                b: 20,
+                d: 'abd'
+            }
+
+            alert(jData.b);
+
+            for(var i in jData){    //for in   既可以遍历数组也可以遍历json
+                alert(i)    //i是key：a、b、d
+            }
+
+
+
+
+
+            // var aData = [10, 20, '123'];
+            // // alert(aData.length)
+            //
+            // //遍历数组
+            // for(var i=0; i<aData.length; i++){
+            //     alert(i)
+            // }
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
